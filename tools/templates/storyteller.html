@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI tools </title>
+        <style>
+            #header {
+              height: 80px;
+              transition: all 0.5s;
+              z-index: 997;
+              transition: all 0.5s;
+              background: #1e4356;
+            }
+            
+            #header.header-transparent {
+              background:  #1e4356;
+            }
+            
+            #header.header-scrolled {
+              background: rgba(30, 67, 86, 0.8);
+              height: 60px;
+            }
+            
+            #header .logo h1 {
+              font-size: 28px;
+              margin: 0;
+              padding: 4px 0;
+              line-height: 1;
+              font-weight: 400;
+              letter-spacing: 3px;
+              text-transform: uppercase;
+            }
+            
+            #header .logo h1 a,
+            #header .logo h1 a:hover {
+              color: #fff;
+              text-decoration: none;
+            }
+            
+            #header .logo img {
+              padding: 0;
+              margin: 0;
+              max-height: 40px;
+            }
+            
+            #main {
+              margin-top: 80px;
+            }
+            
+            /*--------------------------------------------------------------
+            # Navigation Menu
+            --------------------------------------------------------------*/
+            /**
+            * Desktop Navigation 
+            */
+            .navbar {
+              padding: 0;
+            }
+            
+            .navbar ul {
+              margin: 0;
+              padding: 0;
+              display: flex;
+              list-style: none;
+              align-items: center;
+            }
+            
+            .navbar li {
+              position: relative;
+            }
+            
+            .navbar a,
+            .navbar a:focus {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 10px 0 10px 30px;
+              font-family: "Open Sans", sans-serif;
+              font-size: 14px;
+              color: #fff;
+              white-space: nowrap;
+              transition: 0.3s;
+            }
+            
+            .navbar a i,
+            .navbar a:focus i {
+              font-size: 12px;
+              line-height: 0;
+              margin-left: 5px;
+            }
+            
+            .navbar a:hover,
+            .navbar .active,
+            .navbar .active:focus,
+            .navbar li:hover>a {
+              color: #a2cce3;
+            }
+            
+            .navbar .dropdown ul {
+              display: block;
+              position: absolute;
+              left: 14px;
+              top: calc(100% + 30px);
+              margin: 0;
+              padding: 10px 0;
+              z-index: 99;
+              opacity: 0;
+              visibility: hidden;
+              background: #fff;
+              box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+              transition: 0.3s;
+            }
+            
+            .navbar .dropdown ul li {
+              min-width: 200px;
+            }
+            
+            .navbar .dropdown ul a {
+              padding: 10px 20px;
+              font-size: 14px;
+              text-transform: none;
+              color: #1c3745;
+            }
+            
+            .navbar .dropdown ul a i {
+              font-size: 12px;
+            }
+            
+            .navbar .dropdown ul a:hover,
+            .navbar .dropdown ul .active:hover,
+            .navbar .dropdown ul li:hover>a {
+              color: #68A4C4;
+            }
+            
+            .navbar .dropdown:hover>ul {
+              opacity: 1;
+              top: 100%;
+              visibility: visible;
+            }
+            
+            .navbar .dropdown .dropdown ul {
+              top: 0;
+              left: calc(100% - 30px);
+              visibility: hidden;
+            }
+            
+            .navbar .dropdown .dropdown:hover>ul {
+              opacity: 1;
+              top: 0;
+              left: 100%;
+              visibility: visible;
+            }
+            
+            @media (max-width: 1366px) {
+              .navbar .dropdown .dropdown ul {
+                left: -90%;
+              }
+            
+              .navbar .dropdown .dropdown:hover>ul {
+                left: -100%;
+              }
+            }
+            
+            /**
+            * Mobile Navigation 
+            */
+            .mobile-nav-toggle {
+              color: #fff;
+              font-size: 28px;
+              cursor: pointer;
+              display: none;
+              line-height: 0;
+              transition: 0.5s;
+            }
+            
+            @media (max-width: 991px) {
+              .mobile-nav-toggle {
+                display: block;
+              }
+            
+              .navbar ul {
+                display: none;
+              }
+            }
+            
+            .navbar-mobile {
+              position: fixed;
+              overflow: hidden;
+              top: 0;
+              right: 0;
+              left: 0;
+              bottom: 0;
+              background: rgba(17, 38, 48, 0.9);
+              transition: 0.3s;
+            }
+            
+            .navbar-mobile .mobile-nav-toggle {
+              position: absolute;
+              top: 15px;
+              right: 15px;
+            }
+            
+            .navbar-mobile ul {
+              display: block;
+              position: absolute;
+              top: 55px;
+              right: 15px;
+              bottom: 15px;
+              left: 15px;
+              padding: 10px 0;
+              background-color: #fff;
+              overflow-y: auto;
+              transition: 0.3s;
+            }
+            
+            .navbar-mobile a,
+            .navbar-mobile a:focus {
+              padding: 10px 20px;
+              font-size: 15px;
+              color: #1e4356;
+            }
+            
+            .navbar-mobile a:hover,
+            .navbar-mobile .active,
+            .navbar-mobile li:hover>a {
+              color: #68A4C4;
+            }
+            
+            .navbar-mobile .getstarted,
+            .navbar-mobile .getstarted:focus {
+              margin: 15px;
+            }
+            
+            .navbar-mobile .dropdown ul {
+              position: static;
+              display: none;
+              margin: 10px 20px;
+              padding: 10px 0;
+              z-index: 99;
+              opacity: 1;
+              visibility: visible;
+              background: #fff;
+              box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+            }
+            
+            .navbar-mobile .dropdown ul li {
+              min-width: 200px;
+            }
+            
+            .navbar-mobile .dropdown ul a {
+              padding: 10px 20px;
+            }
+            
+            .navbar-mobile .dropdown ul a i {
+              font-size: 12px;
+            }
+            
+            .navbar-mobile .dropdown ul a:hover,
+            .navbar-mobile .dropdown ul .active:hover,
+            .navbar-mobile .dropdown ul li:hover>a {
+              color: #68A4C4;
+            }
+            
+            .navbar-mobile .dropdown>.dropdown-active {
+              display: block;
+            }
+            
+            </style>
+        <link rel="icon" type="image/x-icon" href="/static/image.png">
+    
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      </head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="../_next/static/media/07a54048a9278940-s.p.woff2" as="font" crossorigin=""
+        type="font/woff2" />
+    <link rel="stylesheet" href="../_next/static/css/527fa49dd3b66e7f.css" data-precedence="next" />
+    <link rel="stylesheet" href="../_next/static/css/fc103878774d14b1.css" data-precedence="next" />
+    <link rel="preload" as="script" fetchPriority="low" href="../_next/static/chunks/webpack-ee53ccb8dd32f4eb.js" />
+    <script src="../_next/static/chunks/1dd3208c-e103741555e48aff.js" async=""></script>
+    <script src="../_next/static/chunks/1053-ebff2f4ed55624a0.js" async=""></script>
+    <script src="../_next/static/chunks/main-app-b3b1b205acbb7c21.js" async=""></script>
+    <script src="../_next/static/chunks/14aeac6e-0927b4ff65e60094.js" async=""></script>
+    <script src="../_next/static/chunks/c52c9f0e-7806b2969c6a7fef.js" async=""></script>
+    <script src="../_next/static/chunks/5973d0a0-3813b9943cad6fad.js" async=""></script>
+    <script src="../_next/static/chunks/e29fc8c3-54bc6f85f2a3799b.js" async=""></script>
+    <script src="../_next/static/chunks/9265-0fc600e5e0c85af2.js" async=""></script>
+    <script src="../_next/static/chunks/1070-b302ec9bbfed0571.js" async=""></script>
+    <script src="../_next/static/chunks/5868-08522694243fc164.js" async=""></script>
+    <script src="../_next/static/chunks/7692-1046da1dddd2cd60.js" async=""></script>
+    <script src="../_next/static/chunks/2851-3032c7310f433ba8.js" async=""></script>
+    <script src="../_next/static/chunks/5255-4895b3f5dab02cc0.js" async=""></script>
+    <script src="../_next/static/chunks/8883-52db05a39637893a.js" async=""></script>
+    <script src="../_next/static/chunks/1159-f31608e4776b78c2.js" async=""></script>
+    <script src="../_next/static/chunks/4228-9fb400be616b9894.js" async=""></script>
+    <script src="../_next/static/chunks/app/layout-33ab95189fd75e9f.js" async=""></script>
+    <script src="../_next/static/chunks/91a64fe9-a83ce6e1a605a260.js" async=""></script>
+    <script src="../_next/static/chunks/7d384bb9-ee74a052a8b2e484.js" async=""></script>
+    <script src="../_next/static/chunks/a8460d3d-9d77b200e1d1528b.js" async=""></script>
+    <script src="../_next/static/chunks/5707-f52353fd4d033986.js" async=""></script>
+    <script src="../_next/static/chunks/2030-fa30352946ffdc0f.js" async=""></script>
+    <script src="../_next/static/chunks/764-7133f792b08aef47.js" async=""></script>
+    <script src="../_next/static/chunks/1153-204eb86a09a3ef08.js" async=""></script>
+    <script src="../_next/static/chunks/8252-7bfc534f1b422999.js" async=""></script>
+    <script src="../_next/static/chunks/9112-b27b5c46914fa42c.js" async=""></script>
+    <script src="../_next/static/chunks/4827-24e36455642df884.js" async=""></script>
+    <script src="../_next/static/chunks/2514-ecbed2e717272772.js" async=""></script>
+    <script src="../_next/static/chunks/7157-b5aacef43bd441dc.js" async=""></script>
+    <script src="../_next/static/chunks/802-8c76cdd4864cbdeb.js" async=""></script>
+    <script src="https://www.futurepedia.io/_next/static/chunks/app/ai-tools/%5Bslug%5D/page-c1a11995b2c4e852.js"
+        async=""></script>
+    <link rel="preload" href="https://www.pvdbkr.com/paved.min.js" as="script" />
+    <title>AI Storyteller Tools &amp; Software of 2024</title>
+    <meta name="author" content="futurepedia" />
+    <meta name="creator" content="futurepedia" />
+    <link rel="canonical" href="https://futurepedia-turbo-29lgeafp4-celiza.vercel.app/ai-tools/storyteller" />
+    <meta property="og:title" content="AI Storyteller Tools &amp; Software of 2024" />
+    <meta property="og:url" content="https://futurepedia-turbo-29lgeafp4-celiza.vercel.app/" />
+    <meta property="og:image"
+        content="https://futurepedia-turbo-29lgeafp4-celiza.vercel.app/api/og?title=AI+Storyteller+Tools+%26+Software+of+2024&amp;type=toolCategory" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AI Storyteller Tools &amp; Software of 2024" />
+    <meta property="og:image:secure_url"
+        content="https://futurepedia-turbo-29lgeafp4-celiza.vercel.app/api/og?title=AI+Storyteller+Tools+%26+Software+of+2024&amp;type=toolCategory" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Storyteller Tools &amp; Software of 2024" />
+    <meta name="twitter:image"
+        content="https://futurepedia-turbo-29lgeafp4-celiza.vercel.app/api/og?title=AI+Storyteller+Tools+%26+Software+of+2024&amp;type=toolCategory" />
+    <meta name="twitter:image:width" content="1200" />
+    <meta name="twitter:image:height" content="630" />
+    <meta name="twitter:image:alt" content="AI Storyteller Tools &amp; Software of 2024" />
+    <meta name="twitter:image:secure_url"
+        content="https://futurepedia-turbo-29lgeafp4-celiza.vercel.app/api/og?title=AI+Storyteller+Tools+%26+Software+of+2024&amp;type=toolCategory" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" sizes="256x256" />
+    <meta name="next-size-adjust" />
+    <script src="../_next/static/chunks/polyfills-c67a75d1b6f99dc8.js" noModule=""></script>
+</head>
+<body style="background-color: rgb(172, 202, 207)">
+    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+        <div class="container d-flex justify-content-between align-items-center">
+    
+          <div class="logo">
+            <h1 class="text-light"><a href="/"><span>Neural AI</span></a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+          </div>
+    
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/tool">AI  Tool Categories</a></li>
+              <li><a href="/recommendation">Recommendations</a></li>
+              <li><a href="/contact">Contact Us</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
+        </div>
+      </header><!-- End Header -->
+
+    <script
+        type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","url":"https://www.futurepedia.io/","sameAs":["https://www.youtube.com/@futurepedia_io","https://www.linkedin.com/company/futurepedia/","https://twitter.com/futurepedia_io"],"logo":"https://www.futurepedia.io/_next/image?url=%2Ffuturepedia-dark.svg&w=384&q=75","name":"Futurepedia","description":"Futurepedia is an AI platform offering directories, guides, and media to help professionals use AI for innovation and growth, fostering a community of 200,000+ for knowledge sharing in the tech landscape.","alternateName":"futurepedia.io","email":"contact@futurepedia.io"}</script>
+    <noscript><iframe title="GTM_IFRAME" src="https://www.googletagmanager.com/ns.html?id=GTM-5PHGRKPW" height="0"
+            width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div class="relative min-h-fit">
+        <section class="pt-6">
+            <div class="relative pt-16">
+                <script
+                    type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.futurepedia.io","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.futurepedia.io/ai-tools","name":"ai-tools"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.futurepedia.io/ai-tools/storyteller","name":"storyteller"}}]}</script>
+            </div>
+            <div class="w-full px-4 pt-4">
+                <div class="mx-auto flex max-w-7xl flex-col gap-2 pt-2">
+                    <div class="mx-auto w-full max-w-7xl">
+                        <div
+                            class="prose:text-slate-100 prose-base prose-slate prose-invert prose-headings:scroll-m-24 prose-headings:font-semibold prose-a:underline  prose-a:decoration-inherit prose-ol:list-decimal prose-ul:list-disc">
+                            <h1  style="font-size:x-large;">Create Captivating Narratives using AI Storyteller Tools</h1>
+                            <p class="my-2">In digital narratives, AI storytellers are quickly becoming invaluable
+                                partners. Merging the essence of storytelling with the power of artificial intelligence,
+                                they use sophisticated algorithms to transform prompts effortlessly into captivating
+                                stories. Whether it&#x27;s weaving short stories or creating a long-form narrative,
+                                these tools enable authors to spend less time drafting and more time fine-tuning.</p>
+                            <p class="my-2"></p>
+                            <p class="my-2">Shifting our focus to tools, we explore the digital storytellers behind the
+                                scenes:</p>
+                            <p class="my-2"></p>
+                            <p class="my-2"><strong>Research:</strong></p>
+                            <p class="my-2"><a class="anchor"
+                                    href="storyteller.html#harnessing-ai-for-storytelling">Harnessing AI Storytelling
+                                    Tools</a></p>
+                            <p class="my-2"><a class="anchor"
+                                    href="storyteller.html#crafting-engaging-narratives">Crafting Engaging
+                                    Narratives</a></p>
+                            <p class="my-2"><a class="anchor" href="storyteller.html#power-of-ai-storytelling-tools">The
+                                    Power of AI Storytelling Tools</a></p>
+                            <p class="my-2"><a class="anchor"
+                                    href="storyteller.html#charting-the-future-of-digital-authorship">Charting the
+                                    Future of Digital Authorship</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-auto w-full max-w-7xl pt-8"><!--$-->
+                <div class="px-4">
+                    <div class="my-8 flex w-full flex-col border-b-[1px] md:flex-row">
+                        
+                    </div>
+                    <div class="grid w-full grid-cols-1 grid-rows-3 gap-8 md:grid-cols-2 xl:grid-cols-4">
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/tome">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img alt="Tome logo"
+                                            loading="lazy" width="120" height="120" decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F2734e78f5b673e526219b7bcb9dfaea7ec703025-128x128.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F2734e78f5b673e526219b7bcb9dfaea7ec703025-128x128.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F2734e78f5b673e526219b7bcb9dfaea7ec703025-128x128.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                        <div
+                                            class="inline-flex items-center text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 p-0 m-0 absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform rounded">
+                                            <svg width="18" height="18" viewBox="0 0 18 18"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16.6453 7.03281C16.3508 6.725 16.0461 6.40781 15.9312 6.12891C15.825 5.87344 15.8187 5.45 15.8125 5.03984C15.8008 4.27734 15.7883 3.41328 15.1875 2.8125C14.5867 2.21172 13.7227 2.19922 12.9602 2.1875C12.55 2.18125 12.1266 2.175 11.8711 2.06875C11.593 1.95391 11.275 1.64922 10.9672 1.35469C10.4281 0.836719 9.81563 0.25 9 0.25C8.18437 0.25 7.57266 0.836719 7.03281 1.35469C6.725 1.64922 6.40781 1.95391 6.12891 2.06875C5.875 2.175 5.45 2.18125 5.03984 2.1875C4.27734 2.19922 3.41328 2.21172 2.8125 2.8125C2.21172 3.41328 2.20312 4.27734 2.1875 5.03984C2.18125 5.45 2.175 5.87344 2.06875 6.12891C1.95391 6.40703 1.64922 6.725 1.35469 7.03281C0.836719 7.57188 0.25 8.18437 0.25 9C0.25 9.81563 0.836719 10.4273 1.35469 10.9672C1.64922 11.275 1.95391 11.5922 2.06875 11.8711C2.175 12.1266 2.18125 12.55 2.1875 12.9602C2.19922 13.7227 2.21172 14.5867 2.8125 15.1875C3.41328 15.7883 4.27734 15.8008 5.03984 15.8125C5.45 15.8187 5.87344 15.825 6.12891 15.9312C6.40703 16.0461 6.725 16.3508 7.03281 16.6453C7.57188 17.1633 8.18437 17.75 9 17.75C9.81563 17.75 10.4273 17.1633 10.9672 16.6453C11.275 16.3508 11.5922 16.0461 11.8711 15.9312C12.1266 15.825 12.55 15.8187 12.9602 15.8125C13.7227 15.8008 14.5867 15.7883 15.1875 15.1875C15.7883 14.5867 15.8008 13.7227 15.8125 12.9602C15.8187 12.55 15.825 12.1266 15.9312 11.8711C16.0461 11.593 16.3508 11.275 16.6453 10.9672C17.1633 10.4281 17.75 9.81563 17.75 9C17.75 8.18437 17.1633 7.57266 16.6453 7.03281ZM12.5672 7.56719L8.19219 11.9422C8.13414 12.0003 8.06521 12.0464 7.98934 12.0779C7.91346 12.1093 7.83213 12.1255 7.75 12.1255C7.66787 12.1255 7.58654 12.1093 7.51066 12.0779C7.43479 12.0464 7.36586 12.0003 7.30781 11.9422L5.43281 10.0672C5.31554 9.94991 5.24965 9.79085 5.24965 9.625C5.24965 9.45915 5.31554 9.30009 5.43281 9.18281C5.55009 9.06554 5.70915 8.99965 5.875 8.99965C6.04085 8.99965 6.19991 9.06554 6.31719 9.18281L7.75 10.6164L11.6828 6.68281C11.7409 6.62474 11.8098 6.57868 11.8857 6.54725C11.9616 6.51583 12.0429 6.49965 12.125 6.49965C12.2071 6.49965 12.2884 6.51583 12.3643 6.54725C12.4402 6.57868 12.5091 6.62474 12.5672 6.68281C12.6253 6.74088 12.6713 6.80982 12.7027 6.88569C12.7342 6.96156 12.7503 7.04288 12.7503 7.125C12.7503 7.20712 12.7342 7.28844 12.7027 7.36431C12.6713 7.44018 12.6253 7.50912 12.5672 7.56719Z"
+                                                    fill="#49ADFF"></path>
+                                            </svg></div>
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a href="https://www.futurepedia.io/tool/tome">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            Tome</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Free</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                Unlock your best work with AI-powered generative storytelling from Tome.</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="https://www.futurepedia.io/ai-tools/presentations">#<!-- -->presentations</a><a
+                                        class="hover:text-underline" href="startup-assistant.html">#<!-- -->startup
+                                        tools</a><a class="hover:text-underline" href="storyteller.html">#<!-- -->story
+                                        teller</a></div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_blank" rel="nofollow" data-tool-name="Tome"
+                                    data-tool-category="presentations" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://beta.tome.app/?utm_source=futurepedia&amp;utm_medium=marketplace&amp;utm_campaign=futurepedia"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/jasper">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img alt="Jasper logo"
+                                            loading="lazy" width="120" height="120" decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F0c6d1585cf097da3d56a40c7ae873e7c03a2724a-256x256.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F0c6d1585cf097da3d56a40c7ae873e7c03a2724a-256x256.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F0c6d1585cf097da3d56a40c7ae873e7c03a2724a-256x256.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                        <div
+                                            class="inline-flex items-center text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 p-0 m-0 absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform rounded">
+                                            <svg width="18" height="18" viewBox="0 0 18 18"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16.6453 7.03281C16.3508 6.725 16.0461 6.40781 15.9312 6.12891C15.825 5.87344 15.8187 5.45 15.8125 5.03984C15.8008 4.27734 15.7883 3.41328 15.1875 2.8125C14.5867 2.21172 13.7227 2.19922 12.9602 2.1875C12.55 2.18125 12.1266 2.175 11.8711 2.06875C11.593 1.95391 11.275 1.64922 10.9672 1.35469C10.4281 0.836719 9.81563 0.25 9 0.25C8.18437 0.25 7.57266 0.836719 7.03281 1.35469C6.725 1.64922 6.40781 1.95391 6.12891 2.06875C5.875 2.175 5.45 2.18125 5.03984 2.1875C4.27734 2.19922 3.41328 2.21172 2.8125 2.8125C2.21172 3.41328 2.20312 4.27734 2.1875 5.03984C2.18125 5.45 2.175 5.87344 2.06875 6.12891C1.95391 6.40703 1.64922 6.725 1.35469 7.03281C0.836719 7.57188 0.25 8.18437 0.25 9C0.25 9.81563 0.836719 10.4273 1.35469 10.9672C1.64922 11.275 1.95391 11.5922 2.06875 11.8711C2.175 12.1266 2.18125 12.55 2.1875 12.9602C2.19922 13.7227 2.21172 14.5867 2.8125 15.1875C3.41328 15.7883 4.27734 15.8008 5.03984 15.8125C5.45 15.8187 5.87344 15.825 6.12891 15.9312C6.40703 16.0461 6.725 16.3508 7.03281 16.6453C7.57188 17.1633 8.18437 17.75 9 17.75C9.81563 17.75 10.4273 17.1633 10.9672 16.6453C11.275 16.3508 11.5922 16.0461 11.8711 15.9312C12.1266 15.825 12.55 15.8187 12.9602 15.8125C13.7227 15.8008 14.5867 15.7883 15.1875 15.1875C15.7883 14.5867 15.8008 13.7227 15.8125 12.9602C15.8187 12.55 15.825 12.1266 15.9312 11.8711C16.0461 11.593 16.3508 11.275 16.6453 10.9672C17.1633 10.4281 17.75 9.81563 17.75 9C17.75 8.18437 17.1633 7.57266 16.6453 7.03281ZM12.5672 7.56719L8.19219 11.9422C8.13414 12.0003 8.06521 12.0464 7.98934 12.0779C7.91346 12.1093 7.83213 12.1255 7.75 12.1255C7.66787 12.1255 7.58654 12.1093 7.51066 12.0779C7.43479 12.0464 7.36586 12.0003 7.30781 11.9422L5.43281 10.0672C5.31554 9.94991 5.24965 9.79085 5.24965 9.625C5.24965 9.45915 5.31554 9.30009 5.43281 9.18281C5.55009 9.06554 5.70915 8.99965 5.875 8.99965C6.04085 8.99965 6.19991 9.06554 6.31719 9.18281L7.75 10.6164L11.6828 6.68281C11.7409 6.62474 11.8098 6.57868 11.8857 6.54725C11.9616 6.51583 12.0429 6.49965 12.125 6.49965C12.2071 6.49965 12.2884 6.51583 12.3643 6.54725C12.4402 6.57868 12.5091 6.62474 12.5672 6.68281C12.6253 6.74088 12.6713 6.80982 12.7027 6.88569C12.7342 6.96156 12.7503 7.04288 12.7503 7.125C12.7503 7.20712 12.7342 7.28844 12.7027 7.36431C12.6713 7.44018 12.6253 7.50912 12.5672 7.56719Z"
+                                                    fill="#49ADFF"></path>
+                                            </svg></div>
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a href="https://www.futurepedia.io/tool/jasper">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            Jasper</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Free Trial</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                An AI-driven platform for efficient, high-quality content creation and marketing
+                                strategy enhancement.</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="copywriting-assistant.html">#<!-- -->copywriting</a><a
+                                        class="hover:text-underline" href="writing-generators.html">#<!-- -->writing
+                                        generators</a><a class="hover:text-underline"
+                                        href="paraphrasing.html">#<!-- -->paraphrasing</a></div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_blank" rel="nofollow" data-tool-name="Jasper"
+                                    data-tool-category="copywriting" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://jasper.ai?source=partner&amp;fpr=futurepedia"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/bright-eye">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img
+                                            alt="Bright Eye logo" loading="lazy" width="120" height="120"
+                                            decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fb4783f8bb12e59f3bddf1cf214b6ed2cd600324d-246x246.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fb4783f8bb12e59f3bddf1cf214b6ed2cd600324d-246x246.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fb4783f8bb12e59f3bddf1cf214b6ed2cd600324d-246x246.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                        <div
+                                            class="inline-flex items-center text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 p-0 m-0 absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform rounded">
+                                            <svg width="18" height="18" viewBox="0 0 18 18"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16.6453 7.03281C16.3508 6.725 16.0461 6.40781 15.9312 6.12891C15.825 5.87344 15.8187 5.45 15.8125 5.03984C15.8008 4.27734 15.7883 3.41328 15.1875 2.8125C14.5867 2.21172 13.7227 2.19922 12.9602 2.1875C12.55 2.18125 12.1266 2.175 11.8711 2.06875C11.593 1.95391 11.275 1.64922 10.9672 1.35469C10.4281 0.836719 9.81563 0.25 9 0.25C8.18437 0.25 7.57266 0.836719 7.03281 1.35469C6.725 1.64922 6.40781 1.95391 6.12891 2.06875C5.875 2.175 5.45 2.18125 5.03984 2.1875C4.27734 2.19922 3.41328 2.21172 2.8125 2.8125C2.21172 3.41328 2.20312 4.27734 2.1875 5.03984C2.18125 5.45 2.175 5.87344 2.06875 6.12891C1.95391 6.40703 1.64922 6.725 1.35469 7.03281C0.836719 7.57188 0.25 8.18437 0.25 9C0.25 9.81563 0.836719 10.4273 1.35469 10.9672C1.64922 11.275 1.95391 11.5922 2.06875 11.8711C2.175 12.1266 2.18125 12.55 2.1875 12.9602C2.19922 13.7227 2.21172 14.5867 2.8125 15.1875C3.41328 15.7883 4.27734 15.8008 5.03984 15.8125C5.45 15.8187 5.87344 15.825 6.12891 15.9312C6.40703 16.0461 6.725 16.3508 7.03281 16.6453C7.57188 17.1633 8.18437 17.75 9 17.75C9.81563 17.75 10.4273 17.1633 10.9672 16.6453C11.275 16.3508 11.5922 16.0461 11.8711 15.9312C12.1266 15.825 12.55 15.8187 12.9602 15.8125C13.7227 15.8008 14.5867 15.7883 15.1875 15.1875C15.7883 14.5867 15.8008 13.7227 15.8125 12.9602C15.8187 12.55 15.825 12.1266 15.9312 11.8711C16.0461 11.593 16.3508 11.275 16.6453 10.9672C17.1633 10.4281 17.75 9.81563 17.75 9C17.75 8.18437 17.1633 7.57266 16.6453 7.03281ZM12.5672 7.56719L8.19219 11.9422C8.13414 12.0003 8.06521 12.0464 7.98934 12.0779C7.91346 12.1093 7.83213 12.1255 7.75 12.1255C7.66787 12.1255 7.58654 12.1093 7.51066 12.0779C7.43479 12.0464 7.36586 12.0003 7.30781 11.9422L5.43281 10.0672C5.31554 9.94991 5.24965 9.79085 5.24965 9.625C5.24965 9.45915 5.31554 9.30009 5.43281 9.18281C5.55009 9.06554 5.70915 8.99965 5.875 8.99965C6.04085 8.99965 6.19991 9.06554 6.31719 9.18281L7.75 10.6164L11.6828 6.68281C11.7409 6.62474 11.8098 6.57868 11.8857 6.54725C11.9616 6.51583 12.0429 6.49965 12.125 6.49965C12.2071 6.49965 12.2884 6.51583 12.3643 6.54725C12.4402 6.57868 12.5091 6.62474 12.5672 6.68281C12.6253 6.74088 12.6713 6.80982 12.7027 6.88569C12.7342 6.96156 12.7503 7.04288 12.7503 7.125C12.7503 7.20712 12.7342 7.28844 12.7027 7.36431C12.6713 7.44018 12.6253 7.50912 12.5672 7.56719Z"
+                                                    fill="#49ADFF"></path>
+                                            </svg></div>
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a
+                                        href="https://www.futurepedia.io/tool/bright-eye">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            Bright Eye</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Free</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                Multipurpose, all-in-one AI app to generate text, image, code, story, poem, and to
+                                analyze image and text, and much more.</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="image-generators.html">#<!-- -->image generators</a><a
+                                        class="hover:text-underline"
+                                        href="productivity.html">#<!-- -->productivity</a><a
+                                        class="hover:text-underline"
+                                        href="https://www.futurepedia.io/ai-tools/search-engine">#<!-- -->search
+                                        engine</a></div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_blank" rel="nofollow" data-tool-name="Bright Eye"
+                                    data-tool-category="image generators" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://apps.apple.com/us/app/bright-eye/id1593932475?utm_source=futurepedia&amp;utm_medium=marketplace&amp;utm_campaign=futurepedia"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/artflow-ai">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img
+                                            alt="Artflow ai logo" loading="lazy" width="120" height="120"
+                                            decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fbd5455113cdc53efa7b6b93b93e24e363fcd1a17-32x32.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fbd5455113cdc53efa7b6b93b93e24e363fcd1a17-32x32.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fbd5455113cdc53efa7b6b93b93e24e363fcd1a17-32x32.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a
+                                        href="https://www.futurepedia.io/tool/artflow-ai">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            Artflow ai</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Free</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                Animated Stories with AI-generated assets &amp; original characters</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="storyteller.html">#<!-- -->story teller</a><a class="hover:text-underline"
+                                        href="video-generators.html">#<!-- -->video generators</a><a
+                                        class="hover:text-underline" href="art.html">#<!-- -->art</a></div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_self" rel="nofollow" data-tool-name="Artflow ai"
+                                    data-tool-category="story teller" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://app.artflow.ai/"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/storyd">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img alt="STORYD logo"
+                                            loading="lazy" width="120" height="120" decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F1b642caa3cd476bc2954da7d59abc9553405c8c8-256x256.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F1b642caa3cd476bc2954da7d59abc9553405c8c8-256x256.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F1b642caa3cd476bc2954da7d59abc9553405c8c8-256x256.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                        <div
+                                            class="inline-flex items-center text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 p-0 m-0 absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform rounded">
+                                            <svg width="18" height="18" viewBox="0 0 18 18"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16.6453 7.03281C16.3508 6.725 16.0461 6.40781 15.9312 6.12891C15.825 5.87344 15.8187 5.45 15.8125 5.03984C15.8008 4.27734 15.7883 3.41328 15.1875 2.8125C14.5867 2.21172 13.7227 2.19922 12.9602 2.1875C12.55 2.18125 12.1266 2.175 11.8711 2.06875C11.593 1.95391 11.275 1.64922 10.9672 1.35469C10.4281 0.836719 9.81563 0.25 9 0.25C8.18437 0.25 7.57266 0.836719 7.03281 1.35469C6.725 1.64922 6.40781 1.95391 6.12891 2.06875C5.875 2.175 5.45 2.18125 5.03984 2.1875C4.27734 2.19922 3.41328 2.21172 2.8125 2.8125C2.21172 3.41328 2.20312 4.27734 2.1875 5.03984C2.18125 5.45 2.175 5.87344 2.06875 6.12891C1.95391 6.40703 1.64922 6.725 1.35469 7.03281C0.836719 7.57188 0.25 8.18437 0.25 9C0.25 9.81563 0.836719 10.4273 1.35469 10.9672C1.64922 11.275 1.95391 11.5922 2.06875 11.8711C2.175 12.1266 2.18125 12.55 2.1875 12.9602C2.19922 13.7227 2.21172 14.5867 2.8125 15.1875C3.41328 15.7883 4.27734 15.8008 5.03984 15.8125C5.45 15.8187 5.87344 15.825 6.12891 15.9312C6.40703 16.0461 6.725 16.3508 7.03281 16.6453C7.57188 17.1633 8.18437 17.75 9 17.75C9.81563 17.75 10.4273 17.1633 10.9672 16.6453C11.275 16.3508 11.5922 16.0461 11.8711 15.9312C12.1266 15.825 12.55 15.8187 12.9602 15.8125C13.7227 15.8008 14.5867 15.7883 15.1875 15.1875C15.7883 14.5867 15.8008 13.7227 15.8125 12.9602C15.8187 12.55 15.825 12.1266 15.9312 11.8711C16.0461 11.593 16.3508 11.275 16.6453 10.9672C17.1633 10.4281 17.75 9.81563 17.75 9C17.75 8.18437 17.1633 7.57266 16.6453 7.03281ZM12.5672 7.56719L8.19219 11.9422C8.13414 12.0003 8.06521 12.0464 7.98934 12.0779C7.91346 12.1093 7.83213 12.1255 7.75 12.1255C7.66787 12.1255 7.58654 12.1093 7.51066 12.0779C7.43479 12.0464 7.36586 12.0003 7.30781 11.9422L5.43281 10.0672C5.31554 9.94991 5.24965 9.79085 5.24965 9.625C5.24965 9.45915 5.31554 9.30009 5.43281 9.18281C5.55009 9.06554 5.70915 8.99965 5.875 8.99965C6.04085 8.99965 6.19991 9.06554 6.31719 9.18281L7.75 10.6164L11.6828 6.68281C11.7409 6.62474 11.8098 6.57868 11.8857 6.54725C11.9616 6.51583 12.0429 6.49965 12.125 6.49965C12.2071 6.49965 12.2884 6.51583 12.3643 6.54725C12.4402 6.57868 12.5091 6.62474 12.5672 6.68281C12.6253 6.74088 12.6713 6.80982 12.7027 6.88569C12.7342 6.96156 12.7503 7.04288 12.7503 7.125C12.7503 7.20712 12.7342 7.28844 12.7027 7.36431C12.6713 7.44018 12.6253 7.50912 12.5672 7.56719Z"
+                                                    fill="#49ADFF"></path>
+                                            </svg></div>
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a href="https://www.futurepedia.io/tool/storyd">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            STORYD</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Freemium</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                A tool for data presentations</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="https://www.futurepedia.io/ai-tools/presentations">#<!-- -->presentations</a><a
+                                        class="hover:text-underline" href="storyteller.html">#<!-- -->story teller</a><a
+                                        class="hover:text-underline" href="marketing.html">#<!-- -->marketing</a></div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_blank" rel="nofollow" data-tool-name="STORYD"
+                                    data-tool-category="presentations" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://www.storyd.ai/?utm_source=futurepedia&amp;utm_medium=marketplace&amp;utm_campaign=futurepedia"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4">
+                                <a
+                                    href="https://www.futurepedia.io/tool/runwayml">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img alt="Runwayml logo"
+                                            loading="lazy" width="120" height="120" decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F714f6803a3f840c332a819cee85824cf2ea79be7-512x512.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F714f6803a3f840c332a819cee85824cf2ea79be7-512x512.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F714f6803a3f840c332a819cee85824cf2ea79be7-512x512.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                        <div
+                                            class="inline-flex items-center text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 p-0 m-0 absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform rounded">
+                                            <svg width="18" height="18" viewBox="0 0 18 18"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16.6453 7.03281C16.3508 6.725 16.0461 6.40781 15.9312 6.12891C15.825 5.87344 15.8187 5.45 15.8125 5.03984C15.8008 4.27734 15.7883 3.41328 15.1875 2.8125C14.5867 2.21172 13.7227 2.19922 12.9602 2.1875C12.55 2.18125 12.1266 2.175 11.8711 2.06875C11.593 1.95391 11.275 1.64922 10.9672 1.35469C10.4281 0.836719 9.81563 0.25 9 0.25C8.18437 0.25 7.57266 0.836719 7.03281 1.35469C6.725 1.64922 6.40781 1.95391 6.12891 2.06875C5.875 2.175 5.45 2.18125 5.03984 2.1875C4.27734 2.19922 3.41328 2.21172 2.8125 2.8125C2.21172 3.41328 2.20312 4.27734 2.1875 5.03984C2.18125 5.45 2.175 5.87344 2.06875 6.12891C1.95391 6.40703 1.64922 6.725 1.35469 7.03281C0.836719 7.57188 0.25 8.18437 0.25 9C0.25 9.81563 0.836719 10.4273 1.35469 10.9672C1.64922 11.275 1.95391 11.5922 2.06875 11.8711C2.175 12.1266 2.18125 12.55 2.1875 12.9602C2.19922 13.7227 2.21172 14.5867 2.8125 15.1875C3.41328 15.7883 4.27734 15.8008 5.03984 15.8125C5.45 15.8187 5.87344 15.825 6.12891 15.9312C6.40703 16.0461 6.725 16.3508 7.03281 16.6453C7.57188 17.1633 8.18437 17.75 9 17.75C9.81563 17.75 10.4273 17.1633 10.9672 16.6453C11.275 16.3508 11.5922 16.0461 11.8711 15.9312C12.1266 15.825 12.55 15.8187 12.9602 15.8125C13.7227 15.8008 14.5867 15.7883 15.1875 15.1875C15.7883 14.5867 15.8008 13.7227 15.8125 12.9602C15.8187 12.55 15.825 12.1266 15.9312 11.8711C16.0461 11.593 16.3508 11.275 16.6453 10.9672C17.1633 10.4281 17.75 9.81563 17.75 9C17.75 8.18437 17.1633 7.57266 16.6453 7.03281ZM12.5672 7.56719L8.19219 11.9422C8.13414 12.0003 8.06521 12.0464 7.98934 12.0779C7.91346 12.1093 7.83213 12.1255 7.75 12.1255C7.66787 12.1255 7.58654 12.1093 7.51066 12.0779C7.43479 12.0464 7.36586 12.0003 7.30781 11.9422L5.43281 10.0672C5.31554 9.94991 5.24965 9.79085 5.24965 9.625C5.24965 9.45915 5.31554 9.30009 5.43281 9.18281C5.55009 9.06554 5.70915 8.99965 5.875 8.99965C6.04085 8.99965 6.19991 9.06554 6.31719 9.18281L7.75 10.6164L11.6828 6.68281C11.7409 6.62474 11.8098 6.57868 11.8857 6.54725C11.9616 6.51583 12.0429 6.49965 12.125 6.49965C12.2071 6.49965 12.2884 6.51583 12.3643 6.54725C12.4402 6.57868 12.5091 6.62474 12.5672 6.68281C12.6253 6.74088 12.6713 6.80982 12.7027 6.88569C12.7342 6.96156 12.7503 7.04288 12.7503 7.125C12.7503 7.20712 12.7342 7.28844 12.7027 7.36431C12.6713 7.44018 12.6253 7.50912 12.5672 7.56719Z"
+                                                    fill="#49ADFF"></path>
+                                            </svg></div>
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a
+                                        href="https://www.futurepedia.io/tool/runwayml">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            Runwayml</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Freemium</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                An AI platform transforming text into stunning images and videos, revolutionizing
+                                digital storytelling and content creation.</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="video-editing.html">#<!-- -->video editing</a><a
+                                        class="hover:text-underline" href="image-to-image.html">#<!-- -->image to
+                                        image</a><a class="hover:text-underline"
+                                        href="video-enhancer.html">#<!-- -->video enhancer</a></div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_blank" rel="nofollow" data-tool-name="Runwayml"
+                                    data-tool-category="video editing" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://runwayml.com/?utm_source=futurepedia&amp;utm_medium=marketplace&amp;utm_campaign=futurepedia"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/textero">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img
+                                            alt="Textero AI Essay Writer logo" loading="lazy" width="120" height="120"
+                                            decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fde4c212de981c22a04328dc35cc821cba0c90cb9-64x64.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fde4c212de981c22a04328dc35cc821cba0c90cb9-64x64.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fde4c212de981c22a04328dc35cc821cba0c90cb9-64x64.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                        <div
+                                            class="inline-flex items-center text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 p-0 m-0 absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform rounded">
+                                            <svg width="18" height="18" viewBox="0 0 18 18"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16.6453 7.03281C16.3508 6.725 16.0461 6.40781 15.9312 6.12891C15.825 5.87344 15.8187 5.45 15.8125 5.03984C15.8008 4.27734 15.7883 3.41328 15.1875 2.8125C14.5867 2.21172 13.7227 2.19922 12.9602 2.1875C12.55 2.18125 12.1266 2.175 11.8711 2.06875C11.593 1.95391 11.275 1.64922 10.9672 1.35469C10.4281 0.836719 9.81563 0.25 9 0.25C8.18437 0.25 7.57266 0.836719 7.03281 1.35469C6.725 1.64922 6.40781 1.95391 6.12891 2.06875C5.875 2.175 5.45 2.18125 5.03984 2.1875C4.27734 2.19922 3.41328 2.21172 2.8125 2.8125C2.21172 3.41328 2.20312 4.27734 2.1875 5.03984C2.18125 5.45 2.175 5.87344 2.06875 6.12891C1.95391 6.40703 1.64922 6.725 1.35469 7.03281C0.836719 7.57188 0.25 8.18437 0.25 9C0.25 9.81563 0.836719 10.4273 1.35469 10.9672C1.64922 11.275 1.95391 11.5922 2.06875 11.8711C2.175 12.1266 2.18125 12.55 2.1875 12.9602C2.19922 13.7227 2.21172 14.5867 2.8125 15.1875C3.41328 15.7883 4.27734 15.8008 5.03984 15.8125C5.45 15.8187 5.87344 15.825 6.12891 15.9312C6.40703 16.0461 6.725 16.3508 7.03281 16.6453C7.57188 17.1633 8.18437 17.75 9 17.75C9.81563 17.75 10.4273 17.1633 10.9672 16.6453C11.275 16.3508 11.5922 16.0461 11.8711 15.9312C12.1266 15.825 12.55 15.8187 12.9602 15.8125C13.7227 15.8008 14.5867 15.7883 15.1875 15.1875C15.7883 14.5867 15.8008 13.7227 15.8125 12.9602C15.8187 12.55 15.825 12.1266 15.9312 11.8711C16.0461 11.593 16.3508 11.275 16.6453 10.9672C17.1633 10.4281 17.75 9.81563 17.75 9C17.75 8.18437 17.1633 7.57266 16.6453 7.03281ZM12.5672 7.56719L8.19219 11.9422C8.13414 12.0003 8.06521 12.0464 7.98934 12.0779C7.91346 12.1093 7.83213 12.1255 7.75 12.1255C7.66787 12.1255 7.58654 12.1093 7.51066 12.0779C7.43479 12.0464 7.36586 12.0003 7.30781 11.9422L5.43281 10.0672C5.31554 9.94991 5.24965 9.79085 5.24965 9.625C5.24965 9.45915 5.31554 9.30009 5.43281 9.18281C5.55009 9.06554 5.70915 8.99965 5.875 8.99965C6.04085 8.99965 6.19991 9.06554 6.31719 9.18281L7.75 10.6164L11.6828 6.68281C11.7409 6.62474 11.8098 6.57868 11.8857 6.54725C11.9616 6.51583 12.0429 6.49965 12.125 6.49965C12.2071 6.49965 12.2884 6.51583 12.3643 6.54725C12.4402 6.57868 12.5091 6.62474 12.5672 6.68281C12.6253 6.74088 12.6713 6.80982 12.7027 6.88569C12.7342 6.96156 12.7503 7.04288 12.7503 7.125C12.7503 7.20712 12.7342 7.28844 12.7027 7.36431C12.6713 7.44018 12.6253 7.50912 12.5672 7.56719Z"
+                                                    fill="#49ADFF"></path>
+                                            </svg></div>
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a
+                                        href="https://www.futurepedia.io/tool/textero">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            Textero AI Essay Writer</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Freemium</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                Your reliable AI academic assistant for tasks of any scale. From idea generation and
+                                research assistance to text editing and paper summarizing, Textero.ai will make your
+                                academic journey less stressful. </p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="writing-generators.html">#<!-- -->writing generators</a><a
+                                        class="hover:text-underline" href="education.html">#<!-- -->education</a><a
+                                        class="hover:text-underline" href="storyteller.html">#<!-- -->story teller</a>
+                                </div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_blank" rel="nofollow" data-tool-name="Textero AI Essay Writer"
+                                    data-tool-category="writing generators" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://www.textero.ai/?utm_source=futurepedia&amp;utm_medium=marketplace&amp;utm_campaign=futurepedia"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/rosebud">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img alt="Rosebud logo"
+                                            loading="lazy" width="120" height="120" decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F8476ac165a688a285d95a52dfa9e7bdef57e3edf-1680x876.png%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F8476ac165a688a285d95a52dfa9e7bdef57e3edf-1680x876.png%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F8476ac165a688a285d95a52dfa9e7bdef57e3edf-1680x876.png%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a
+                                        href="https://www.futurepedia.io/tool/rosebud">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            Rosebud</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Free</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                Unleash AI to convert text into playable games, animate characters, and craft assets
+                                with ease.</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="art.html">#<!-- -->art</a><a class="hover:text-underline"
+                                        href="design-generators.html">#<!-- -->design generators</a><a
+                                        class="hover:text-underline"
+                                        href="https://www.futurepedia.io/ai-tools/fun-tools">#<!-- -->fun tools</a>
+                                </div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_self" rel="nofollow" data-tool-name="Rosebud" data-tool-category="art"
+                                    data-tool-placement="category" data-sponsorship-status="not_active"
+                                    href="https://www.rosebud.ai/"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/what-on-earth">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img
+                                            alt="What on earth? logo" loading="lazy" width="120" height="120"
+                                            decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fcffe0cd6191b1979e397a786185cd7722a39ced9-1680x876.png%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fcffe0cd6191b1979e397a786185cd7722a39ced9-1680x876.png%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fcffe0cd6191b1979e397a786185cd7722a39ced9-1680x876.png%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a
+                                        href="https://www.futurepedia.io/tool/what-on-earth">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            What on earth?</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Free</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                Create stories with one-word prompts for fun learning.</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="storyteller.html">#<!-- -->story teller</a></div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_self" rel="nofollow" data-tool-name="What on earth?"
+                                    data-tool-category="story teller" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://www.whatonearth.ai/"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/brandscript-generator">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img
+                                            alt="BrandScript Generator logo" loading="lazy" width="120" height="120"
+                                            decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fd6cdb518cda654ddd550dbe79950c35daf7eb3bb-512x512.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fd6cdb518cda654ddd550dbe79950c35daf7eb3bb-512x512.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2Fd6cdb518cda654ddd550dbe79950c35daf7eb3bb-512x512.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                        <div
+                                            class="inline-flex items-center text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 p-0 m-0 absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform rounded">
+                                            <svg width="18" height="18" viewBox="0 0 18 18"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16.6453 7.03281C16.3508 6.725 16.0461 6.40781 15.9312 6.12891C15.825 5.87344 15.8187 5.45 15.8125 5.03984C15.8008 4.27734 15.7883 3.41328 15.1875 2.8125C14.5867 2.21172 13.7227 2.19922 12.9602 2.1875C12.55 2.18125 12.1266 2.175 11.8711 2.06875C11.593 1.95391 11.275 1.64922 10.9672 1.35469C10.4281 0.836719 9.81563 0.25 9 0.25C8.18437 0.25 7.57266 0.836719 7.03281 1.35469C6.725 1.64922 6.40781 1.95391 6.12891 2.06875C5.875 2.175 5.45 2.18125 5.03984 2.1875C4.27734 2.19922 3.41328 2.21172 2.8125 2.8125C2.21172 3.41328 2.20312 4.27734 2.1875 5.03984C2.18125 5.45 2.175 5.87344 2.06875 6.12891C1.95391 6.40703 1.64922 6.725 1.35469 7.03281C0.836719 7.57188 0.25 8.18437 0.25 9C0.25 9.81563 0.836719 10.4273 1.35469 10.9672C1.64922 11.275 1.95391 11.5922 2.06875 11.8711C2.175 12.1266 2.18125 12.55 2.1875 12.9602C2.19922 13.7227 2.21172 14.5867 2.8125 15.1875C3.41328 15.7883 4.27734 15.8008 5.03984 15.8125C5.45 15.8187 5.87344 15.825 6.12891 15.9312C6.40703 16.0461 6.725 16.3508 7.03281 16.6453C7.57188 17.1633 8.18437 17.75 9 17.75C9.81563 17.75 10.4273 17.1633 10.9672 16.6453C11.275 16.3508 11.5922 16.0461 11.8711 15.9312C12.1266 15.825 12.55 15.8187 12.9602 15.8125C13.7227 15.8008 14.5867 15.7883 15.1875 15.1875C15.7883 14.5867 15.8008 13.7227 15.8125 12.9602C15.8187 12.55 15.825 12.1266 15.9312 11.8711C16.0461 11.593 16.3508 11.275 16.6453 10.9672C17.1633 10.4281 17.75 9.81563 17.75 9C17.75 8.18437 17.1633 7.57266 16.6453 7.03281ZM12.5672 7.56719L8.19219 11.9422C8.13414 12.0003 8.06521 12.0464 7.98934 12.0779C7.91346 12.1093 7.83213 12.1255 7.75 12.1255C7.66787 12.1255 7.58654 12.1093 7.51066 12.0779C7.43479 12.0464 7.36586 12.0003 7.30781 11.9422L5.43281 10.0672C5.31554 9.94991 5.24965 9.79085 5.24965 9.625C5.24965 9.45915 5.31554 9.30009 5.43281 9.18281C5.55009 9.06554 5.70915 8.99965 5.875 8.99965C6.04085 8.99965 6.19991 9.06554 6.31719 9.18281L7.75 10.6164L11.6828 6.68281C11.7409 6.62474 11.8098 6.57868 11.8857 6.54725C11.9616 6.51583 12.0429 6.49965 12.125 6.49965C12.2071 6.49965 12.2884 6.51583 12.3643 6.54725C12.4402 6.57868 12.5091 6.62474 12.5672 6.68281C12.6253 6.74088 12.6713 6.80982 12.7027 6.88569C12.7342 6.96156 12.7503 7.04288 12.7503 7.125C12.7503 7.20712 12.7342 7.28844 12.7027 7.36431C12.6713 7.44018 12.6253 7.50912 12.5672 7.56719Z"
+                                                    fill="#49ADFF"></path>
+                                            </svg></div>
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a
+                                        href="https://www.futurepedia.io/tool/brandscript-generator">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            BrandScript Generator</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Free</span><span
+                                        class="flex items-center text-slate-500"><span class="mr-1">333</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="h-5 w-5 hover:cursor-pointer hover:fill-ice-500 hover:stroke-ice-500 fill-bookmark-inactive stroke-bookmark-inactive">
+                                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
+                                        </svg></span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                AI-powered tool transforming brand storytelling for businesses</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="copywriting-assistant.html">#<!-- -->copywriting</a><a
+                                        class="hover:text-underline" href="marketing.html">#<!-- -->marketing</a><a
+                                        class="hover:text-underline" href="storyteller.html">#<!-- -->story teller</a>
+                                </div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_blank" rel="nofollow" data-tool-name="BrandScript Generator"
+                                    data-tool-category="copywriting" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://www.brandscriptgenerator.com/?utm_source=futurepedia&amp;utm_medium=marketplace&amp;utm_campaign=futurepedia"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/character-ai">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img
+                                            alt="Character AI logo" loading="lazy" width="120" height="120"
+                                            decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F8fe0a0b3cee660eee7f6c8a56e2fd6d65fea7acf-200x200.jpg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F8fe0a0b3cee660eee7f6c8a56e2fd6d65fea7acf-200x200.jpg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F8fe0a0b3cee660eee7f6c8a56e2fd6d65fea7acf-200x200.jpg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                        <div
+                                            class="inline-flex items-center text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 p-0 m-0 absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform rounded">
+                                            <svg width="18" height="18" viewBox="0 0 18 18"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16.6453 7.03281C16.3508 6.725 16.0461 6.40781 15.9312 6.12891C15.825 5.87344 15.8187 5.45 15.8125 5.03984C15.8008 4.27734 15.7883 3.41328 15.1875 2.8125C14.5867 2.21172 13.7227 2.19922 12.9602 2.1875C12.55 2.18125 12.1266 2.175 11.8711 2.06875C11.593 1.95391 11.275 1.64922 10.9672 1.35469C10.4281 0.836719 9.81563 0.25 9 0.25C8.18437 0.25 7.57266 0.836719 7.03281 1.35469C6.725 1.64922 6.40781 1.95391 6.12891 2.06875C5.875 2.175 5.45 2.18125 5.03984 2.1875C4.27734 2.19922 3.41328 2.21172 2.8125 2.8125C2.21172 3.41328 2.20312 4.27734 2.1875 5.03984C2.18125 5.45 2.175 5.87344 2.06875 6.12891C1.95391 6.40703 1.64922 6.725 1.35469 7.03281C0.836719 7.57188 0.25 8.18437 0.25 9C0.25 9.81563 0.836719 10.4273 1.35469 10.9672C1.64922 11.275 1.95391 11.5922 2.06875 11.8711C2.175 12.1266 2.18125 12.55 2.1875 12.9602C2.19922 13.7227 2.21172 14.5867 2.8125 15.1875C3.41328 15.7883 4.27734 15.8008 5.03984 15.8125C5.45 15.8187 5.87344 15.825 6.12891 15.9312C6.40703 16.0461 6.725 16.3508 7.03281 16.6453C7.57188 17.1633 8.18437 17.75 9 17.75C9.81563 17.75 10.4273 17.1633 10.9672 16.6453C11.275 16.3508 11.5922 16.0461 11.8711 15.9312C12.1266 15.825 12.55 15.8187 12.9602 15.8125C13.7227 15.8008 14.5867 15.7883 15.1875 15.1875C15.7883 14.5867 15.8008 13.7227 15.8125 12.9602C15.8187 12.55 15.825 12.1266 15.9312 11.8711C16.0461 11.593 16.3508 11.275 16.6453 10.9672C17.1633 10.4281 17.75 9.81563 17.75 9C17.75 8.18437 17.1633 7.57266 16.6453 7.03281ZM12.5672 7.56719L8.19219 11.9422C8.13414 12.0003 8.06521 12.0464 7.98934 12.0779C7.91346 12.1093 7.83213 12.1255 7.75 12.1255C7.66787 12.1255 7.58654 12.1093 7.51066 12.0779C7.43479 12.0464 7.36586 12.0003 7.30781 11.9422L5.43281 10.0672C5.31554 9.94991 5.24965 9.79085 5.24965 9.625C5.24965 9.45915 5.31554 9.30009 5.43281 9.18281C5.55009 9.06554 5.70915 8.99965 5.875 8.99965C6.04085 8.99965 6.19991 9.06554 6.31719 9.18281L7.75 10.6164L11.6828 6.68281C11.7409 6.62474 11.8098 6.57868 11.8857 6.54725C11.9616 6.51583 12.0429 6.49965 12.125 6.49965C12.2071 6.49965 12.2884 6.51583 12.3643 6.54725C12.4402 6.57868 12.5091 6.62474 12.5672 6.68281C12.6253 6.74088 12.6713 6.80982 12.7027 6.88569C12.7342 6.96156 12.7503 7.04288 12.7503 7.125C12.7503 7.20712 12.7342 7.28844 12.7027 7.36431C12.6713 7.44018 12.6253 7.50912 12.5672 7.56719Z"
+                                                    fill="#49ADFF"></path>
+                                            </svg></div>
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a
+                                        href="https://www.futurepedia.io/tool/character-ai">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            Character AI</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Free</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                An AI platform for engaging in natural, open-ended conversations and creative tasks.</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="https://www.futurepedia.io/ai-tools/avatar-generator">#<!-- -->avatars</a><a
+                                        class="hover:text-underline"
+                                        href="https://www.futurepedia.io/ai-tools/fun-tools">#<!-- -->fun tools</a><a
+                                        class="hover:text-underline" href="generative.html">#<!-- -->generative ai
+                                        tools</a></div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_blank" rel="nofollow" data-tool-name="Character AI"
+                                    data-tool-category="avatars" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://beta.character.ai/?utm_source=futurepedia&amp;utm_medium=marketplace&amp;utm_campaign=futurepedia"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col bg-card text-card-foreground xl:aspect-square h-full w-full rounded-xl border shadow-lg">
+                            <div class="px-6 pb-2 pt-4 flex h-24 flex-row items-start gap-4"><a
+                                    href="https://www.futurepedia.io/tool/instanovel-ai">
+                                    <div class="relative flex flex-shrink-0 rounded-xl border"><img
+                                            alt="InstaNovel AI logo" loading="lazy" width="120" height="120"
+                                            decoding="async" data-nimg="1"
+                                            class="aspect-square h-[60px] w-[60px] rounded-xl" style="color:transparent"
+                                            srcSet="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F4ff67f7a9ad04db6811d6e41b6b8c6d034073306-76x76.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=128&q=75amp;qhttps://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F4ff67f7a9ad04db6811d6e41b6b8c6d034073306-76x76.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&w=256&q=75p;w=256&amp;q=75 2x"
+                                            src="https://www.futurepedia.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu0v1th4q%2Fproduction%2F4ff67f7a9ad04db6811d6e41b6b8c6d034073306-76x76.svg%3Ffp-x%3D0.5%26fp-y%3D0.5%26w%3D120%26h%3D120%26sharp%3D100%26q%3D100%26auto%3Dformat%26dpr%3D3&amp;w=256&amp;q=75" />
+                                    </div>
+                                </a>
+                                <div class="flex flex-col items-start"><a
+                                        href="https://www.futurepedia.io/tool/instanovel-ai">
+                                        <p
+                                            class="m-0 line-clamp-2 overflow-hidden text-xl font-semibold text-slate-700">
+                                            InstaNovel AI</p>
+                                    </a></div>
+                            </div>
+                            <div class="px-6">
+                                <div class="flex justify-between text-lg"><span>Freemium</span></div>
+                            </div>
+                            <p
+                                class="text-muted-foreground my-2 line-clamp-2 overflow-hidden overflow-ellipsis px-6 text-base">
+                                InstaNovel.ai generates mini-novels from prompts, free with 1 book/person</p>
+                            <div class="px-6 mb-6 flex flex-wrap gap-1 py-2 text-base text-ice-500">
+                                <div class="flex flex-wrap gap-x-2 gap-y-1 "><a class="hover:text-underline"
+                                        href="storyteller.html">#<!-- -->story teller</a><a class="hover:text-underline"
+                                        href="https://www.futurepedia.io/ai-tools/fun-tools">#<!-- -->fun tools</a>
+                                </div>
+                            </div>
+                            <div class="px-6 mt-auto flex items-center justify-between pb-4">
+                                <div class="flex items-center gap-2 text-[#6b7280]"> </div><a class="hover:no-underline"
+                                    target="_self" rel="nofollow" data-tool-name="InstaNovel AI"
+                                    data-tool-category="story teller" data-tool-placement="category"
+                                    data-sponsorship-status="not_active"
+                                    href="https://instanovel.ai/"><button
+                                        class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-ice-500 flex items-center gap-2 border-2 border-ice-500 hover:bg-ice-500 hover:text-white h-10 px-4 py-2"><span
+                                            class="text-lg font-normal">Visit</span><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="h-5 w-5">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                                        </svg></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div><!--/$-->
+            </div>
+            <div class="relative mx-auto w-full max-w-7xl px-4 pb-8">
+                <div class="mx-auto w-full max-w-7xl">
+                    <div
+                        class="prose:text-slate-100 prose-base prose-slate prose-invert prose-headings:scroll-m-24 prose-headings:font-semibold prose-a:underline  prose-a:decoration-inherit prose-ol:list-decimal prose-ul:list-disc">
+                        <p class="my-2"></p>
+                        <div class="my-4">
+                            <div><a id="harnessing-ai-for-storytelling"></a></div>
+                        </div>
+                        <h2 class="font-heading text-2xl sm:text-4xl" id="harnessing-ai-storytelling-tools">Harnessing
+                            AI Storytelling Tools</h2>
+                        <p class="my-2">AI storyteller tools are revolutionizing the way we craft narratives.
+                            Here&#x27;s how:</p>
+                        <ul class="">
+                            <li class=" pl-0"><strong>Authors and Writers </strong>are leveraging AI-powered writing
+                                assistants to edit, tailor, and publish their works. With tools like the &quot;story
+                                generator&quot; or &quot;narrative engine&quot;, authors can draft interactive stories
+                                using user-provided input, then refine with user-friendly interfaces.</li>
+                            <li class=" pl-0"><strong>Content Strategists </strong>are employing these tools for various
+                                use-cases, such as generating a blog post outline or creating content for new chatbots.
+                                From Medium to Discord, there are tools that cater to a spectrum of platforms.</li>
+                            <li class=" pl-0"><strong>Novel Creators </strong>are using freestyle and template modes,
+                                where they can either experiment with storytelling or stick to a structured format.
+                                These AI-powered story tools can generate a complete novel or short stories based on
+                                user prompts.</li>
+                            <li class=" pl-0"><strong>Interactive Experience Designers </strong>are using AI
+                                storytelling tools offer a platform for creators to develop engaging, AI-generated
+                                scenarios for interactive mediums, ensuring each narrative is unique.</li>
+                            <li class=" pl-0"><strong>Marketers and Copywriters</strong> are going beyond the typical AI
+                                copywriting, they can craft better stories for branding, utilizing AI story generators
+                                to create engaging ad narratives or promotional tales.</li>
+                        </ul>
+                        <p class="my-2"></p>
+                        <div class="my-4">
+                            <div><a id="crafting-engaging-narratives"></a></div>
+                        </div>
+                        <h2 class="font-heading text-2xl sm:text-4xl" id="crafting-engaging-narratives"><strong>Crafting
+                                Engaging Narratives</strong></h2>
+                        <p class="my-2">For narratives, AI storytellers have swiftly emerged as indispensable creative
+                            partners. By fusing the essence of storytelling with the capabilities of artificial
+                            intelligence, these tools harness sophisticated algorithms to transform prompts into
+                            captivating narratives effortlessly. Whether you seek to weave concise short stories or
+                            embark on the creation of long-form epics, these AI-powered companions empower authors to
+                            spend less time drafting and more time refining their narratives.</p>
+                        <p class="my-2"></p>
+                        <div class="my-4">
+                            <div><a id="power-of-ai-storytelling-tools"></a></div>
+                        </div>
+                        <h2 class="font-heading text-2xl sm:text-4xl" id="the-power-of-ai-storytelling-tools">
+                            <strong>The Power of AI Storytelling Tools</strong></h2>
+                        <p class="my-2">AI storyteller tools represent a paradigm shift in narrative craftsmanship,
+                            revolutionizing how we create stories. Authors and writers find them invaluable for editing,
+                            tailoring, and publishing their works. With tools like the &quot;story generator&quot; or
+                            &quot;narrative engine,&quot; authors can draft interactive stories using user-provided
+                            input and refine them through intuitive, user-friendly interfaces.</p>
+                        <p class="my-2"><br />The potential applications of AI storytelling tools are vast, and their
+                            user-friendly features ensure accessibility to individuals with varying writing expertise.
+                            The ascent of AI storyteller tools signifies the harmonious fusion of creativity and
+                            cutting-edge technology. Selecting the right AI-powered writing software is paramount for
+                            those aspiring to create resonant content. With many options available, ranging from
+                            platforms that facilitate collaborative storytelling with AI to tools that streamline the
+                            writing process, there is undoubtedly a tool that aligns with your creative needs.</p>
+                        <p class="my-2"></p>
+                        <div class="my-4">
+                            <div><a id="charting-the-future-of-digital-authorship"></a></div>
+                        </div>
+                        <h2 class="font-heading text-2xl sm:text-4xl" id="charting-the-future-of-digital-authorship">
+                            <strong>Charting the Future of Digital Authorship</strong></h2>
+                        <p class="my-2">Embrace the boundless possibilities, experiment, and embark on a journey to
+                            craft better stories. The future of digital authorship beckons, offering a creative
+                            landscape where the realms of human imagination and AI technology intertwine seamlessly. As
+                            you explore this era of AI-enhanced storytelling, prepare to be inspired by the
+                            transformative potential it offers. In a world where narratives captivate hearts and minds,
+                            AI storyteller tools are the vanguard of innovation, ready to elevate your storytelling
+                            prowess to new heights. Craft your records, and let the future of digital authorship unfold
+                            before you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+
+    </body>
+    </html>
